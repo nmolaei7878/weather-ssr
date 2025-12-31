@@ -13,18 +13,18 @@ export function useCities() {
 
   const updateCity = (province: string, updatedCity: Partial<City>) => {
     setCityList(
-      cityList.map((c) =>
+      cityList.map((c: any) =>
         c.province === province ? { ...c, ...updatedCity } : c
       )
     );
   };
 
   const deleteCity = (province: string) => {
-    setCityList(cityList.filter((c) => c.province !== province));
+    setCityList(cityList.filter((c: any) => c.province !== province));
   };
 
   const getCity = (province: string) =>
-    cityList.find((c) => c.province === province);
+    cityList.find((c: any) => c.province === province);
 
   return { cityList, addCity, updateCity, deleteCity, getCity };
 }
