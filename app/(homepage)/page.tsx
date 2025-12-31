@@ -12,7 +12,6 @@ export default function HomePage() {
 
   return (
     <main>
-      <h1 className={styles.title}>Weather</h1>
       <div className={styles.container}>
         {cityWeather?.map((city) => (
           <LazyWeatherCard

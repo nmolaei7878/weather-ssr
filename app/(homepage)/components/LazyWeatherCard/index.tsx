@@ -2,14 +2,15 @@
 
 import { useIntersectionObserver } from '@/app/_shared/hooks/useIntersectionObserver';
 import { useRef } from 'react';
-import WeatherCard from '../WeatherCard';
+import WeatherCard from '../WeatherCard/index';
 
-interface LazyWeatherCardProps {
+export default function LazyWeatherCard({
+  city,
+  temp,
+}: {
   city: string;
   temp: number;
-}
-
-export default function LazyWeatherCard({ city, temp }: LazyWeatherCardProps) {
+}) {
   const ref = useRef<HTMLDivElement | null>(null);
   const isVisible = useIntersectionObserver(ref as React.RefObject<Element>, {
     threshold: 0.1,
