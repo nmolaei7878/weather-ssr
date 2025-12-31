@@ -1,16 +1,20 @@
-import { getWeather } from './api/weather';
-import { CityWeather } from './api/weather/type';
+'use client';
 import LazyWeatherCard from './components/LazyWeatherCard';
 import styles from './page.module.css';
+import useGetWeather from './query/weather';
 
-export default async function HomePage() {
-  const cityWeather: CityWeather[] = await getWeather();
+export default function HomePage() {
+  const { data: cityWeather, isLoading, error } = useGetWeather();
+
+  if (isLoading) {
+    return <div>load</div>;
+  }
 
   return (
     <main>
       <h1 className={styles.title}>Weather</h1>
       <div className={styles.container}>
-        {cityWeather.map((city) => (
+        {cityWeather?.map((city) => (
           <LazyWeatherCard
             key={city.province}
             city={city.province}
